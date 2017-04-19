@@ -1,7 +1,6 @@
 ## live-server
 
-## how to use
-
+## setup
 ```bash
 # build ffmpeg
 cp ffmpeg+x264.Dockerfile Dockerfile
@@ -19,3 +18,8 @@ Folders in docker img
 /live/hls for hls streaming  
 /live/rec for record  
 /live/log for log storage  
+
+## url
+push rtmp://host/live/StreamName  
+pull rtmp://host/live/StreamName  
+hls http://host:8080/hls/StreamName.m3u8  
