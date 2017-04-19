@@ -24,10 +24,11 @@ RUN make install
 RUN ln -s /usr/local/nginx/sbin/nginx /usr/bin/nginx
 
 WORKDIR /live
-RUN mkdir /live/hls /live/conf /live/rec /live/log
+RUN mkdir /live/hls /live/conf /live/rec /live/log /live/html
 
 COPY http.conf /live/conf/http.conf
 COPY rtmp.conf /live/conf/rtmp.conf
+COPY index.html /live/html/index.html
 
 EXPOSE 1935 
 EXPOSE 8080

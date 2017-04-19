@@ -1,0 +1,37 @@
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>live⭐kira</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="http://vjs.zencdn.net/5.11/video-js.min.css" rel="stylesheet">
+    <script src="http://vjs.zencdn.net/5.11/video.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.3.0/videojs-contrib-hls.min.js"></script>   
+</head>
+
+<body>
+
+    <video id="example-video" width=600 height=300 class="video-js vjs-default-skin">
+        <source src="http://127.0.0.1:8080/hls/app.m3u8" type="application/x-mpegURL">
+    </video>
+
+    <div>
+        StreamName: <input id="stream_name" type="text"><button id="play">play</button>
+    </div>
+    <script>
+        document.querySelector('#play').addEventListener('click', function(){
+            let stream_name = document.querySelector('#stream_name').value;
+            let url = "http://127.0.0.1:8080/hls/"+stream_name+".m3u8";
+            console.log("video src: "+url)
+            document.querySelector('source').src = url;
+            var player = videojs('example-video', {'controls':true});
+            player.play(); 
+        })
+    </script>
+</body>
+
+</html>
