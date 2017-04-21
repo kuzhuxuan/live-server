@@ -6,6 +6,9 @@ ENV nginx_version 1.12.0
 
 RUN apt-get update
 RUN apt-get install -y git libpcre3-dev libaio1 openssl libssl-dev
+# additional
+RUN apt-get install -y vim curl nodejs
+
 
 WORKDIR /
 # Download nginx and nginx-rtmp-module
@@ -24,11 +27,12 @@ RUN make install
 RUN ln -s /usr/local/nginx/sbin/nginx /usr/bin/nginx
 
 WORKDIR /live
-RUN mkdir /live/hls /live/conf /live/rec /live/log /live/html
+RUN mkdir /live/hls /live/conf /live/rec /live/log /live/html /live/auth
 
 COPY http.conf /live/conf/http.conf
 COPY rtmp.conf /live/conf/rtmp.conf
 COPY index.html /live/html/index.html
+COPY auth_server.js /live/auth/auth_server.js
 
 EXPOSE 1935 
 EXPOSE 8080
